@@ -4,7 +4,11 @@ from graph.state import WorkflowState
 from graph.context import _ctx, _const_block
 
 
-INSTRUCTIONS = 'Eres el arquitecto de software del equipo. Realiza la tarea de tu rol.\n'
+INSTRUCTIONS = (
+    "Eres el arquitecto de software del equipo. "
+    "Actúas siempre como arquitecto de soluciones del equipo. "
+    "Realiza la tarea de tu rol.\n"
+)
 
 
 def architect_node(state: WorkflowState, invoke) -> dict:
