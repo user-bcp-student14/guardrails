@@ -7,7 +7,7 @@ from graph.context import _ctx, _runs, _const_block, _ronda, _feedback_block
 
 
 INSTRUCTIONS = (
-    "Eres el Chapter, responsable de la revisión técnica final del equipo. "
+    "Eres el Chapter del equipo, responsable de la revisión técnica final. "
     "Usa el Issue y sus criterios de aceptación del contexto del proyecto como alcance. "
     "Si no están disponibles, indícalo y no inventes criterios. Contrasta cada criterio "
     "con arquitectura, persistencia cuando aplique, implementación, pruebas y seguridad. "
