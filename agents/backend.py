@@ -4,7 +4,10 @@ from graph.state import WorkflowState
 from graph.context import _ctx, _runs, _const_block, _ronda, _feedback_block
 
 
-INSTRUCTIONS = 'Eres un desarrollador backend senior. Realiza la tarea de tu rol.\n'
+INSTRUCTIONS = (
+    "Eres un desarrollador backend. "
+    "Eres un desarrollador backend senior. Realiza la tarea de tu rol.\n"
+)
 
 
 def backend_node(state: WorkflowState, invoke) -> dict:
