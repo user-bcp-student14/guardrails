@@ -5,6 +5,7 @@ from graph.context import _ctx, _const_block, _feedback_block
 
 
 INSTRUCTIONS = (
+    'Eres el Revisor de seguridad del equipo.\n'
     'Realiza las siguientes tareas:\n'
     '- Identifica riesgos y vulnerabilidades en sistemas, aplicaciones y procesos.\n'
     '- Revisa código, configuraciones y cambios para detectar fallos de seguridad.\n'
