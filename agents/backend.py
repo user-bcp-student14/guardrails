@@ -23,8 +23,21 @@ def backend_node(state: WorkflowState, invoke) -> dict:
 
     print(f"[backend_node] Refactorizando backend (ronda {_ronda(state)})...")
 
-    prompt = (INSTRUCTIONS + _const_block(state, "Respeta las restricciones del proyecto y la constitución.") + "\nRepositorio: " + state["repo_name"] + "\nPlan:\n" + _ctx(state.get("out_plan", ""),2500) + "\nCódigo original:\n" + _ctx(state.get("snapshot", ""),4000) + _feedback_block(state) + '\nPara código usa ### ruta/archivo.ext seguida de un bloque markdown.')
+    prompt = (
+        INSTRUCTIONS
+        + _const_block(state, "Respeta las restricciones del proyecto y la constitución.")
+        + "\nRepositorio: "
+        + state["repo_name"]
+        + "\nPlan aprobado:\n"
+        + _ctx(state.get("out_plan", ""), 2500)
+        + "\nCódigo disponible:\n"
+        + _ctx(state.get("snapshot", ""), 4000)
+        + _feedback_block(state)
+    )
     if state.get("include_data"):
-        prompt += "\nContrato aprobado de Datos y persistencia:\n" + _ctx(state.get("out_data", ""), 6000)
-        prompt += "\nImplementa el acceso a datos según este contrato; no regeneres sus migraciones SQL."
+        prompt += (
+            "\nContrato aprobado de Datos y persistencia:\n"
+            + _ctx(state.get("out_data", ""), 6000)
+            + "\nImplementa el acceso a datos según este contrato; no regeneres ni modifiques sus migraciones SQL."
+        )
     return {"out_backend": invoke(prompt)}
