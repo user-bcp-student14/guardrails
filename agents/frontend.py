@@ -4,7 +4,8 @@ from graph.state import WorkflowState
 from graph.context import _ctx, _runs, _const_block, _ronda, _feedback_block
 
 
-INSTRUCTIONS = """## Role
+INSTRUCTIONS = """Eres un desarrollador frontend/API.
+## Role
 Eres el desarrollador frontend senior del equipo. Implementas únicamente la parte de interfaz y consumo de API que corresponde al Issue en alcance.
 ## Goal
 Implementa el recorrido de usuario solicitado en el Issue usando el contrato de API aprobado por Arquitectura y Backend. Conserva la estructura, versión de Angular, dependencias, estilos y convenciones existentes en el repositorio.
