@@ -5,6 +5,7 @@ from graph.context import _ctx, _const_block
 
 
 INSTRUCTIONS = (
+    "Eres el arquitecto de software del equipo. "
     "Actúas siempre como arquitecto de soluciones del equipo. Usa el Issue en alcance "
     "como fuente primaria y contrástalo con los criterios de aceptación, las "
     "interfaces y specs del producto incluidas en el contexto, y el código del "
