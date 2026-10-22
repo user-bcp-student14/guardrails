@@ -129,20 +129,26 @@ def chapter_node(state: WorkflowState, invoke) -> dict:
 
 def parse_verdict(text: str) -> str:
     """
-    Interpreta una única línea de veredicto explícita; ambigüedad fuerza otra ronda.
+    Interpreta un único veredicto explícito, incluido el formato heredado del stub.
+    La ausencia o ambigüedad fuerza otra ronda.
 
     Retorna: "aprobado" | "observaciones" | "rechazado"
     """
     lines = [
         line.strip()
         for line in (text or "").splitlines()
-        if re.match(r"^\s*VEREDICTO\b", line, flags=re.IGNORECASE)
+        if re.match(
+            r"^\s*VEREDICTO(?:\s+FINAL)?\s*:",
+            line,
+            flags=re.IGNORECASE,
+        )
     ]
     if len(lines) != 1:
         return "observaciones"
 
     match = re.fullmatch(
-        r"VEREDICTO:\s*(APROBADO CON OBSERVACIONES|APROBADO|RECHAZADO)",
+        r"VEREDICTO(?:\s+FINAL)?\s*:\s*"
+        r"(APROBADO CON OBSERVACIONES|APROBADO|RECHAZADO)(?:\s*\.|$).*",
         lines[0],
         flags=re.IGNORECASE,
     )
